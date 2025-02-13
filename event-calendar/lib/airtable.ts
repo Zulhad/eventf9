@@ -1,6 +1,8 @@
 import Airtable from "airtable"
 import type { Event } from "./types"
 
+if (!process.env.NEXT_PUBLIC_AIRTABLE_ACCESS_TOKEN || !process.env.NEXT_PUBLIC_AIRTABLE_BASE_ID) {
+  throw new Error("Missing Airtable environment variables")
 
 const base = new Airtable({ apiKey: process.env.AIRTABLE_ACCESS_TOKEN }).base(process.env.AIRTABLE_BASE_ID!)
 
